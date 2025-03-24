@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_container
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: my_database
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
+
+
+
+#requisitos para instalar docker-compose en linux tener instalado docker
+#sudo apt-get update
+#sudo apt-get install docker.io
+#sudo apt-get install docker-compose
+#si no funcionan estos comandos buscar en la documentacion de docker
+
+#comando para levantar el servidor de postgresql
+#sudo docker-compose up -d --build
